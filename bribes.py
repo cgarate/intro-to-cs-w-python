@@ -7,20 +7,20 @@ def minimumBribes(Q):
     # so that our values go from 0 to N-1, just like our
     # indices.  (Not necessary but makes it easier to
     # understand.)
-    # Q = [P-1 for P in Q]
+    Q = [P-1 for P in Q]
     print("Q: " + str(Q))
     # Loop through each person (P) in the queue (Q)
     for i,P in enumerate(Q):
-        # print("P1: " + str(P))
+        
     #
-        print("i: " + str(i))
+        # print("i: " + str(i))
       # print("P: " + str(P))
         # i is the current position of P, while P is the
         # original position of P.
         #
         # First check if any P is more than two ahead of 
         # its original position
-        if P - (i+1) > 2:
+        if P - i > 2:
             print("Too chaotic")
             return
         #
@@ -40,14 +40,17 @@ def minimumBribes(Q):
         # range(P-1,i).  To make sure we don't try an
         # index less than zero, replace P-1 with
         # max(P-1,0)
-        for j in range(max(P-1,0),i+1):
+        for j in range(max(P-1,0),i):
             
             # print("Q[j] > P: " + str(Q[j] > P))
             if Q[j] > P:
-                print("Orig position of P (P): " + str(P))
+                print("Index: " + str(i))
+                print("Range: " + str(range(max(P-1,0),i)))
+                print("P: " + str(P))
                 print("j: " + str(j))
                 print("Current Pos of P (i): " + str(i))
                 print("Q[j]: " + str(Q[j]))
+                print()
                 moves += 1
     print(moves)
 
